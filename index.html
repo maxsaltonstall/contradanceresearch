@@ -13,27 +13,26 @@
         .prose {
             max-width: 80ch;
         }
-        .prose h2 {
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .prose h3 {
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
+        /* Adding custom gradient for the header text */
+        .gradient-text {
+            background-image: linear-gradient(to right, #3b82f6, #14b8a6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         .card {
             background-color: white;
             border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            padding: 1.5rem 2rem;
             margin-bottom: 1.5rem;
             transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
         }
         .card:hover {
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+            transform: translateY(-4px) scale(1.01);
+            border-color: #3b82f6;
         }
         table {
             width: 100%;
@@ -41,107 +40,74 @@
             border-collapse: collapse;
         }
         th, td {
-            padding: 0.75rem;
+            padding: 0.75rem 1rem;
             text-align: left;
             border-bottom: 1px solid #e2e8f0;
         }
         th {
-            background-color: #f8fafc;
-            font-weight: 600;
-        }
-        tr:hover {
             background-color: #f1f5f9;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        tbody tr:hover {
+            background-color: #e0f2fe;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-100 text-slate-800">
 
     <div class="container mx-auto p-4 md:p-8 prose">
 
         <!-- Header Section -->
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">The Art and Craft of Contra Dance</h1>
-            <p class="text-lg text-gray-600">A web-based guide based on the research report "Contra Dance Composition and Calling".</p>
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 gradient-text">The Art and Craft of Contra Dance</h1>
+            <p class="text-lg text-slate-600">A web-based guide based on the research report "Contra Dance Composition and Calling".</p>
         </header>
 
         <main>
             <!-- Introduction Card -->
             <div class="card">
-                <h2 class="!mt-0">What is Contra Dance?</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mt-0">What is Contra Dance?</h2>
                 <p>Contra dance is a vibrant social dance form with deep historical roots. More than just a series of steps, it's a community-building event designed for social interaction. Dancers form lines of couples and progress up and down the hall, dancing with a new couple for each cycle of the dance. It's known for its welcoming atmosphere, live music, and the fact that you don't need to bring a partner to participate.</p>
-                            </div>
+            </div>
 
             <!-- History Card -->
             <div class="card">
-                <h2>A Rich History</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mt-0">A Rich History</h2>
                 <p>Contra dance's lineage traces back to 17th-century English, Scottish, and French country dances. It became popular in the American colonies in the late 18th century. While its popularity waned in cities, it was preserved in rural New England. A major revival in the 1960s and 70s infused the form with new energy, leading to the flowing, energetic style we see today. This history shows a tradition that is always evolving while staying true to its social roots.</p>
             </div>
 
             <!-- Core Figures Card -->
             <div class="card">
-                <h2>The Language of Contra: Core Figures</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mt-0">The Language of Contra: Core Figures</h2>
                 <p>Contra choreography is built from a vocabulary of about 20 core figures. This makes it easy for newcomers to learn. Below is a searchable glossary of some of the most common moves.</p>
-                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for a figure..." class="w-full p-2 border border-gray-300 rounded-md mt-4 mb-2">
-                <div class="overflow-x-auto">
+                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for a figure..." class="w-full p-2 border border-slate-300 rounded-md mt-4 mb-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                <div class="overflow-x-auto rounded-lg border border-slate-200">
                     <table id="figuresTable">
-                        <thead>
+                        <thead class="bg-slate-50">
                             <tr>
                                 <th>Figure Name</th>
                                 <th>Beat Count</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Allemande</td>
-                                <td>8</td>
-                                <td>Two dancers take a hand (left or right) and walk around each other.</td>
-                            </tr>
-                            <tr>
-                                <td>Balance</td>
-                                <td>4</td>
-                                <td>A four-count step, usually forward and back, often before a swing.</td>
-                            </tr>
-                            <tr>
-                                <td>Swing</td>
-                                <td>12 or 16</td>
-                                <td>Partners take a ballroom-style hold and rotate clockwise together.</td>
-                            </tr>
-                            <tr>
-                                <td>Do-Si-Do</td>
-                                <td>8</td>
-                                <td>Dancers pass right shoulders, move back-to-back, and back up passing left shoulders.</td>
-                            </tr>
-                            <tr>
-                                <td>Circle Left/Right</td>
-                                <td>8</td>
-                                <td>Four dancers join hands and walk in a circle.</td>
-                            </tr>
-                            <tr>
-                                <td>Star Left/Right</td>
-                                <td>8</td>
-                                <td>Four dancers put a hand in the center and walk in a circle.</td>
-                            </tr>
-                            <tr>
-                                <td>Ladies Chain</td>
-                                <td>8</td>
-                                <td>Two ladies cross, giving right hands, and are turned by the opposite person.</td>
-                            </tr>
-                            <tr>
-                                <td>Right and Left Through</td>
-                                <td>8</td>
-                                <td>Two couples pass through each other, taking right hands, and do a courtesy turn.</td>
-                            </tr>
-                            <tr>
-                                <td>Hey for Four</td>
-                                <td>16</td>
-                                <td>Four dancers weave in a figure-eight pattern without taking hands.</td>
-                            </tr>
-                             <tr>
-                                <td>Promenade</td>
-                                <td>8 or 16</td>
-                                <td>Partners walk side-by-side to a new position.</td>
-                            </tr>
+                        <tbody class="bg-white">
+                            <tr><td>Allemande</td><td>8</td><td>Two dancers take a hand (left or right) and walk around each other.</td></tr>
+                            <tr><td>Balance</td><td>4</td><td>A four-count step, usually forward and back, often before a swing.</td></tr>
+                            <tr><td>Box the Gnat</td><td>4</td><td>Dancers take right hands; one ducks under the other's arm to trade places.</td></tr>
+                            <tr><td>Circle Left/Right</td><td>8</td><td>Four dancers join hands and walk in a circle.</td></tr>
+                            <tr><td>Do-Si-Do</td><td>8</td><td>Dancers pass right shoulders, move back-to-back, and back up passing left shoulders.</td></tr>
+                            <tr><td>Gypsy</td><td>8</td><td>Dancers circle each other while maintaining eye contact, without touching.</td></tr>
+                            <tr><td>Hey for Four</td><td>16</td><td>Four dancers weave in a figure-eight pattern without taking hands.</td></tr>
+                            <tr><td>Ladies Chain</td><td>8</td><td>Two ladies cross, giving right hands, and are turned by the opposite person.</td></tr>
+                            <tr><td>Mad Robin</td><td>8</td><td>Dancers cross the set and circle around another dancer.</td></tr>
+                            <tr><td>Pass Thru</td><td>4</td><td>Two couples walk forward, passing through each other without giving hands.</td></tr>
+                            <tr><td>Petronella Turn</td><td>8</td><td>Dancers move one position clockwise, often with a clap or stamp.</td></tr>
+                            <tr><td>Promenade</td><td>8 or 16</td><td>Partners walk side-by-side to a new position.</td></tr>
+                            <tr><td>Pull By</td><td>4</td><td>Dancers take a wrist grip and pull past each other to change places.</td></tr>
+                            <tr><td>Right and Left Through</td><td>8</td><td>Two couples pass through each other, taking right hands, and do a courtesy turn.</td></tr>
+                            <tr><td>Star Left/Right</td><td>8</td><td>Four dancers put a hand in the center and walk in a circle.</td></tr>
+                            <tr><td>Swing</td><td>12 or 16</td><td>Partners take a ballroom-style hold and rotate clockwise together.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -149,24 +115,23 @@
 
              <!-- Music Card -->
             <div class="card">
-                <h2>The Heartbeat: Contra Music</h2>
+                <h2 class="text-2xl font-bold text-slate-900 mt-0">The Heartbeat: Contra Music</h2>
                 <p>The music is the soul of contra dance. Most tunes are reels or jigs from Anglo-Celtic traditions. They have a specific structure called <strong>AABB</strong>. A tune consists of two 8-bar parts (A and B), and each is played twice. This creates a 64-beat cycle that perfectly matches one cycle of the dance choreography. This perfect sync between music and movement is fundamental to the contra experience.</p>
             </div>
 
             <!-- Example Dances Card -->
             <div class="card">
-                <h2>Choreography in Action: Two Examples</h2>
-                <h3>"The Carousel" by Tom Hinds</h3>
+                <h2 class="text-2xl font-bold text-slate-900 mt-0">Choreography in Action: Two Examples</h2>
+                <h3 class="text-xl font-semibold text-teal-600">"The Carousel" by Tom Hinds</h3>
                 <p>A modern classic known for its incredible flow. The transitions are designed to feel seamless and inevitable, with a brilliant B2 part where a Circle Left ¾ flows perfectly into a neighbor swing, accomplishing the progression in a smooth, carousel-like motion.</p>
-                <h3>"Dela Says Yippee" by Dugan Murphy</h3>
+                <h3 class="text-xl font-semibold text-teal-600 mt-4">"Dela Says Yippee" by Dugan Murphy</h3>
                 <p>An energetic Becket formation dance. Its signature is a high-energy A1 part with two quick pull-bys across the set, often accompanied by a joyful "Yippee!". This dance's character comes from the contrast between these sharp, linear moves and two long, rotational partner swings.</p>
             </div>
 
             <!-- Modern Trends Card -->
             <div class="card">
-                <h2>The Living Tradition: Modern Trends</h2>
-                <p>Contra dance continues to evolve, reflecting the values of its community.</p>
-                <ul>
+                <h2 class="text-2xl font-bold text-slate-900 mt-0">The Living Tradition: Modern Trends</h2>
+                <ul class="list-disc pl-5 space-y-2">
                     <li><strong>Gender-Free Calling:</strong> A major shift is the move from "Gents" and "Ladies" to inclusive terms like "Larks" (person on the left) and "Robins" (person on the right) to create a more welcoming space for all dancers.</li>
                     <li><strong>"Zesty" Dancing:</strong> The modern style emphasizes continuous motion and high energy, with all dancers active for most of the 64 beats.</li>
                     <li><strong>Techno Contra:</strong> An exciting fusion where the traditional band is replaced by a DJ playing electronic dance music, attracting a younger crowd with a high-energy, club-like atmosphere.</li>
@@ -176,8 +141,8 @@
         </main>
 
         <!-- Footer -->
-        <footer class="text-center mt-12 py-4 border-t">
-            <p class="text-gray-600">Generated by Gemini from a research report. For informational purposes only.</p>
+        <footer class="text-center mt-12 py-6 border-t border-slate-200">
+            <p class="text-slate-500">Generated by Gemini from a research report. For informational purposes only.</p>
         </footer>
 
     </div>
@@ -188,9 +153,9 @@
             const input = document.getElementById("searchInput");
             const filter = input.value.toUpperCase();
             const table = document.getElementById("figuresTable");
-            const tr = table.getElementsByTagName("tr");
+            const tr = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
-            for (let i = 1; i < tr.length; i++) { // Start from 1 to skip header row
+            for (let i = 0; i < tr.length; i++) {
                 let td = tr[i].getElementsByTagName("td")[0];
                 if (td) {
                     let txtValue = td.textContent || td.innerText;
@@ -206,3 +171,4 @@
 
 </body>
 </html>
+
