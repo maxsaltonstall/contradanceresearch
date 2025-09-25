@@ -12,13 +12,10 @@
         window.DD_RUM && window.DD_RUM.init({
           clientToken: 'pub87c33eacbc3396f4264e9d3b899e59f4',
           applicationId: '3ad3ee92-2663-4e86-acae-7fca15dbfde6',
-          // `site` refers to the Datadog site parameter of your organization
-          // see https://docs.datadoghq.com/getting_started/site/
           site: 'datadoghq.com',
           service: 'contra-dance-info',
           env: 'demo',
-          // Specify a version number to identify the deployed version of your application in Datadog
-          // version: '1.0.0',
+          version: '1.1.0',
           sessionSampleRate: 100,
           sessionReplaySampleRate: 100,
           trackBfcacheViews: true,
@@ -28,23 +25,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #ec4899;
+            --accent-color: #10b981;
+            --bg-light: #f8fafc;
+            --bg-card: white;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
         }
         .prose {
             max-width: 80ch;
         }
-        /* Adding custom gradient for the header text */
         .gradient-text {
-            background-image: linear-gradient(to right, #3b82f6, #14b8a6);
+            background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .card {
-            background-color: white;
+            background-color: var(--bg-card);
             border-radius: 0.75rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             padding: 1.5rem 2rem;
             margin-bottom: 1.5rem;
             transition: all 0.3s ease-in-out;
@@ -53,7 +62,19 @@
         .card:hover {
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
             transform: translateY(-4px) scale(1.01);
-            border-color: #3b82f6;
+            border-color: var(--primary-color);
+        }
+        .card h2, .card h3 {
+            color: var(--text-dark);
+        }
+        .card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .card a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
         }
         table {
             width: 100%;
@@ -63,46 +84,48 @@
         th, td {
             padding: 0.75rem 1rem;
             text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
         }
         th {
             background-color: #f1f5f9;
             font-weight: 600;
-            color: #1e293b;
+        }
+        tbody tr:nth-child(odd) {
+           background-color: #fdfdff;
         }
         tbody tr:hover {
-            background-color: #e0f2fe;
+            background-color: #eef2ff;
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800">
+<body class="bg-slate-50 text-slate-800">
 
     <div class="container mx-auto p-4 md:p-8 prose">
 
         <!-- Header Section -->
         <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 gradient-text">The Art and Craft of Contra Dance</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 gradient-text">The Art and Craft of Contra Dance</h1>
             <p class="text-lg text-slate-600">A web-based guide based on the research report "Contra Dance Composition and Calling".</p>
         </header>
 
         <main>
             <!-- Introduction Card -->
             <div class="card">
-                <h2 class="text-2xl font-bold text-slate-900 mt-0">What is Contra Dance?</h2>
+                <h2 class="text-2xl font-bold mt-0">What is Contra Dance?</h2>
                 <p>Contra dance is a vibrant social dance form with deep historical roots. More than just a series of steps, it's a community-building event designed for social interaction. Dancers form lines of couples and progress up and down the hall, dancing with a new couple for each cycle of the dance. It's known for its welcoming atmosphere, live music, and the fact that you don't need to bring a partner to participate.</p>
             </div>
 
             <!-- History Card -->
             <div class="card">
-                <h2 class="text-2xl font-bold text-slate-900 mt-0">A Rich History</h2>
+                <h2 class="text-2xl font-bold mt-0">A Rich History</h2>
                 <p>Contra dance's lineage traces back to 17th-century English, Scottish, and French country dances. It became popular in the American colonies in the late 18th century. While its popularity waned in cities, it was preserved in rural New England. A major revival in the 1960s and 70s infused the form with new energy, leading to the flowing, energetic style we see today. This history shows a tradition that is always evolving while staying true to its social roots.</p>
             </div>
 
             <!-- Core Figures Card -->
             <div class="card">
-                <h2 class="text-2xl font-bold text-slate-900 mt-0">The Language of Contra: Core Figures</h2>
-                <p>Contra choreography is built from a vocabulary of about 20 core figures. This makes it easy for newcomers to learn. Below is a searchable glossary of some of the most common moves.</p>
-                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for a figure..." class="w-full p-2 border border-slate-300 rounded-md mt-4 mb-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                <h2 class="text-2xl font-bold mt-0">The Language of Contra: Core Figures</h2>
+                <p>Contra choreography is built from a vocabulary of core figures. This makes it easy for newcomers to learn. Below is a searchable glossary of some of the most common moves.</p>
+                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for a figure..." class="w-full p-2 border border-slate-300 rounded-md mt-4 mb-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
                 <div class="overflow-x-auto rounded-lg border border-slate-200">
                     <table id="figuresTable">
                         <thead class="bg-slate-50">
@@ -115,9 +138,12 @@
                         <tbody class="bg-white">
                             <tr><td>Allemande</td><td>8</td><td>Two dancers take a hand (left or right) and walk around each other.</td></tr>
                             <tr><td>Balance</td><td>4</td><td>A four-count step, usually forward and back, often before a swing.</td></tr>
+                            <tr><td>Becket Formation</td><td>N/A</td><td>Dancers start in a circle of four, partners side-by-side facing another couple.</td></tr>
                             <tr><td>Box the Gnat</td><td>4</td><td>Dancers take right hands; one ducks under the other's arm to trade places.</td></tr>
+                            <tr><td>Butterfly Whirl</td><td>8</td><td>Partners face, take both hands, and spin clockwise in place.</td></tr>
                             <tr><td>Chain Thru</td><td>8</td><td>Two dancers cross the set, giving right hands, and are turned by the person on the other side.</td></tr>
                             <tr><td>Circle Left/Right</td><td>8</td><td>Four dancers join hands and walk in a circle.</td></tr>
+                            <tr><td>Courtesy Turn</td><td>4</td><td>One dancer, with their left hand, turns another dancer who is on their right.</td></tr>
                             <tr><td>Do-Si-Do</td><td>8</td><td>Dancers pass right shoulders, move back-to-back, and back up passing left shoulders.</td></tr>
                             <tr><td>Hey for Four</td><td>16</td><td>Four dancers weave in a figure-eight pattern without taking hands.</td></tr>
                             <tr><td>Mad Robin</td><td>8</td><td>Dancers cross the set and circle around another dancer.</td></tr>
@@ -136,24 +162,44 @@
 
              <!-- Music Card -->
             <div class="card">
-                <h2 class="text-2xl font-bold text-slate-900 mt-0">The Heartbeat: Contra Music</h2>
+                <h2 class="text-2xl font-bold mt-0">The Heartbeat: Contra Music</h2>
                 <p>The music is the soul of contra dance. Most tunes are reels or jigs from Anglo-Celtic traditions. They have a specific structure called <strong>AABB</strong>. A tune consists of two 8-bar parts (A and B), and each is played twice. This creates a 64-beat cycle that perfectly matches one cycle of the dance choreography. This perfect sync between music and movement is fundamental to the contra experience.</p>
             </div>
 
             <!-- Example Dances Card -->
             <div class="card">
-                <h2 class="text-2xl font-bold text-slate-900 mt-0">Choreography in Action: Two Examples</h2>
-                <h3 class="text-xl font-semibold text-teal-600">"The Carousel" by Tom Hinds</h3>
+                <h2 class="text-2xl font-bold mt-0">Choreography in Action: Two Examples</h2>
+                <h3 class="text-xl font-semibold text-pink-600">"The Carousel" by Tom Hinds</h3>
                 <p>A modern classic known for its incredible flow. The transitions are designed to feel seamless and inevitable, with a brilliant B2 part where a Circle Left ¾ flows perfectly into a neighbor swing, accomplishing the progression in a smooth, carousel-like motion.</p>
-                <h3 class="text-xl font-semibold text-teal-600 mt-4">"Dela Says Yippee" by Dugan Murphy</h3>
+                <h3 class="text-xl font-semibold text-pink-600 mt-4">"Dela Says Yippee" by Dugan Murphy</h3>
                 <p>An energetic Becket formation dance. Its signature is a high-energy A1 part with two quick pull-bys across the set, often accompanied by a joyful "Yippee!". This dance's character comes from the contrast between these sharp, linear moves and two long, rotational partner swings.</p>
+            </div>
+            
+            <!-- New Resources Card -->
+            <div class="card">
+                <h2 class="text-2xl font-bold mt-0">Resources & Further Learning</h2>
+                <p>The contra community is vast and welcoming. Here are some excellent resources to find dances, learn more, and explore choreography.</p>
+                
+                <h3 class="text-xl font-semibold mt-6 text-emerald-600">Community & Event Finders</h3>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                    <li><a href="https://www.cdss.org/" target="_blank" rel="noopener noreferrer">Country Dance and Song Society (CDSS)</a>: A central hub for traditional dance, music, and song in North America.</li>
+                    <li><a href="https://trycontra.org/" target="_blank" rel="noopener noreferrer">TryContra.org</a>: A site specifically designed to welcome new dancers to the community.</li>
+                    <li><a href="https://www.thedancegypsy.com/" target="_blank" rel="noopener noreferrer">The Dance Gypsy</a>: A comprehensive calendar of contra dances and other folk events across the country.</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold mt-6 text-emerald-600">Dance & Calling Databases</h3>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                    <li><a href="https://www.contramaster.com/" target="_blank" rel="noopener noreferrer">The Contra-Master</a>: A massive, searchable database of contra dance choreography.</li>
+                    <li><a href="http://www.callerlab.org/" target="_blank" rel="noopener noreferrer">Callerlab</a>: An international association of square dance callers, with resources often relevant to contra callers.</li>
+                     <li><a href="https://contrafusion.co.uk/dances/" target="_blank" rel="noopener noreferrer">Contra-Fusion Dance Index</a>: A collection of modern contra dances, often with videos.</li>
+                </ul>
             </div>
 
             <!-- Modern Trends Card -->
             <div class="card">
-                <h2 class="text-2xl font-bold text-slate-900 mt-0">The Living Tradition: Modern Trends</h2>
+                <h2 class="text-2xl font-bold mt-0">The Living Tradition: Modern Trends</h2>
                 <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Gender-Free Calling:</strong> A major shift is the move from "Gents" and "Ladies" to inclusive terms like "Larks" (person on the left) and "Robins" (person on the right) to create a more welcoming space for all dancers.</li>
+                    <li><strong>Gender-Free Calling:</strong> A major shift from traditional role terms to inclusive ones like "Larks" (person on the left) and "Robins" (person on the right) to create a more welcoming space for all dancers.</li>
                     <li><strong>"Zesty" Dancing:</strong> The modern style emphasizes continuous motion and high energy, with all dancers active for most of the 64 beats.</li>
                     <li><strong>Techno Contra:</strong> An exciting fusion where the traditional band is replaced by a DJ playing electronic dance music, attracting a younger crowd with a high-energy, club-like atmosphere.</li>
                 </ul>
